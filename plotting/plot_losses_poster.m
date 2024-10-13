@@ -83,43 +83,11 @@ end
 %% plot the medians 
 
 fig = figure(5);
+load('pos.mat')
 c_min = min([min(med_esr,[],'all'), min(med_mrstft,[],'all'), min(med_power,[],'all'), min(med_edc,[],'all')]);
 c_max = max([max(med_esr,[],'all'), max(med_mrstft,[],'all'), max(med_power,[],'all'), max(med_edc,[],'all')]);
 
-subplot(1, 4, 1);
-imagesc(med_esr);
-clim([c_min, c_max])
-axis image;
-colormap(mycolormap); 
-hold on 
-for i = 1:11
-   plot([.5,11.5],[i-.5,i-.5],'k-');
-   plot([i-.5,i-.5],[.5,11.5],'k-');
-end
-xlim([0.5, 11.5]); ylim([0.5, 11.5]);
-xlabel('Number of reflective panels', 'FontSize', 20); ylabel('Number of reflective panels','FontSize',20)
-set(gca,'Fontsize',16,'YTick', [1:11], 'YTicklabel',{'0--4', '5--9', '10--14', '15--19', '20--24', '25--29', '30--34', '35--39', '40--44', '45--49', '50--55'},'fontname','Times')
-set(gca,'Fontsize',16,'XTick', [1:11], 'XTicklabel',{'0--4', '5--9', '10--14', '15--19', '20--24', '25--29', '30--34', '35--39', '40--44', '45--49', '50--55'},'fontname','Times')
-title('$\mathcal{L}_{ESR}$')
-
-subplot(1, 4, 2); 
-imagesc(med_mrstft);
-clim([c_min, c_max])
-axis image;
-colormap(mycolormap);
-hold on 
-for i = 1:11
-   plot([.5,11.5],[i-.5,i-.5],'k-');
-   plot([i-.5,i-.5],[.5,11.5],'k-');
-end
-
-xlim([0.5, 11.5]); ylim([0.5, 11.5]);
-xlabel('Number of reflective panels', 'FontSize', 20); ylabel('Number of reflective panels','FontSize',20)
-set(gca,'Fontsize',16,'YTick', [1:11], 'YTicklabel',{'0--4', '5--9', '10--14', '15--19', '20--24', '25--29', '30--34', '35--39', '40--44', '45--49', '50--55'},'fontname','Times')
-set(gca,'Fontsize',16,'XTick', [1:11], 'XTicklabel',{'0--4', '5--9', '10--14', '15--19', '20--24', '25--29', '30--34', '35--39', '40--44', '45--49', '50--55'},'fontname','Times')
-title('$\mathcal{L}_{MSS}$')
-
-subplot(1, 4, 3); 
+subplot(2, 5, [1, 2, 6, 7]);
 imagesc(med_power); 
 clim([c_min, c_max])
 axis image;
@@ -130,12 +98,12 @@ for i = 1:11
    plot([i-.5,i-.5],[.5,11.5],'k-');
 end
 xlim([0.5, 11.5]); ylim([0.5, 11.5]);
-xlabel('Number of reflective panels', 'FontSize', 20); ylabel('Number of reflective panels','FontSize',20)
-set(gca,'Fontsize',16,'YTick', [1:11], 'YTicklabel',{'0--4', '5--9', '10--14', '15--19', '20--24', '25--29', '30--34', '35--39', '40--44', '45--49', '50--55'},'fontname','Times')
-set(gca,'Fontsize',16,'XTick', [1:11], 'XTicklabel',{'0--4', '5--9', '10--14', '15--19', '20--24', '25--29', '30--34', '35--39', '40--44', '45--49', '50--55'},'fontname','Times')
-title('$\mathcal{L}_{\textrm{PC}}$')
+xlabel('Number of reflective panels', 'FontSize', 30); ylabel('Number of reflective panels','FontSize',30)
+set(gca,'Fontsize',20,'YTick', [1:11], 'YTicklabel',{'0--4', '5--9', '10--14', '15--19', '20--24', '25--29', '30--34', '35--39', '40--44', '45--49', '50--55'},'fontname','Times')
+set(gca,'Fontsize',20,'XTick', [1:11], 'XTicklabel',{'0--4', '5--9', '10--14', '15--19', '20--24', '25--29', '30--34', '35--39', '40--44', '45--49', '50--55'},'fontname','Times')
+title('$\mathcal{L}_{\textrm{PC}}$','Fontsize', 28)
 
-subplot(1, 4, 4); 
+subplot(2, 5, [3, 4, 8, 9]);
 imagesc(med_edc); 
 clim([c_min, c_max])
 axis image;
@@ -146,10 +114,40 @@ for i = 1:11
    plot([i-.5,i-.5],[.5,11.5],'k-');
 end
 xlim([0.5, 11.5]); ylim([0.5, 11.5]);
-xlabel('Number of reflective panels', 'FontSize', 20); ylabel('Number of reflective panels','FontSize',20)
-set(gca,'Fontsize',16,'YTick', [1:11], 'YTicklabel',{'0--4', '5--9', '10--14', '15--19', '20--24', '25--29', '30--34', '35--39', '40--44', '45--49', '50--55'},'fontname','Times')
-set(gca,'Fontsize',16,'XTick', [1:11], 'XTicklabel',{'0--4', '5--9', '10--14', '15--19', '20--24', '25--29', '30--34', '35--39', '40--44', '45--49', '50--55'},'fontname','Times')
-title('$\mathcal{L}_{EDC}$')
+set(gca,'YTick',[])
+set(gca,'Fontsize',20,'XTick', [1:11], 'XTicklabel',{'0--4', '5--9', '10--14', '15--19', '20--24', '25--29', '30--34', '35--39', '40--44', '45--49', '50--55'},'fontname','Times')
+title('$\mathcal{L}_{\textrm{EDC}}$','Fontsize', 28)
+
+subplot(2, 5, 5);
+imagesc(med_mrstft);
+clim([c_min, c_max])
+axis image;
+colormap(mycolormap);
+hold on 
+for i = 1:11
+   plot([.5,11.5],[i-.5,i-.5],'k-');
+   plot([i-.5,i-.5],[.5,11.5],'k-');
+end
+xlim([0.5, 11.5]); ylim([0.5, 11.5]);
+set(gca,'XTick',[])
+set(gca,'YTick',[])
+title('$\mathcal{L}_{\textrm{ESR}}$','Fontsize', 20)
+
+subplot(2, 5, 10);
+imagesc(med_esr);
+clim([c_min, c_max])
+axis image;
+colormap(mycolormap); 
+hold on 
+for i = 1:11
+   plot([.5,11.5],[i-.5,i-.5],'k-');
+   plot([i-.5,i-.5],[.5,11.5],'k-');
+end
+xlim([0.5, 11.5]); ylim([0.5, 11.5]);
+set(gca,'XTick',[])
+set(gca,'YTick',[])
+title('$\mathcal{L}_{\textrm{MSS}}$', 'Fontsize', 20)
+
 
 h = axes(fig,'visible','off'); 
 h.Title.Visible = 'on';

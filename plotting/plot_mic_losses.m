@@ -84,35 +84,11 @@ for i = 1:length(div)
     end
 end
 
-% med_edc = triu(med_edc);
-% med_power = triu(med_power);
-% med_mrstft = triu(med_mrstft);
-% med_esr = triu(med_esr);
-
-%% make symmetric 
-% % aftern normalization
-% [n,m]=size(med_edc);
-% 
-% % med_edc = med_edc/max(med_edc,[],'all');
-% med_edc = triu(med_edc,1)'+med_edc;
-% med_edc = (med_edc - mean(med_edc, 'all'))/std(med_edc,0,'all');
-% 
-% % med_power = med_power/max(med_power,[],'all');
-% med_power = triu(med_power,1)'+med_power;
-% med_power = (med_power - mean(med_power, 'all'))/std(med_power,0,'all');
-% 
-% % med_mrstft = med_mrstft/max(med_mrstft,[],'all');
-% med_mrstft = triu(med_mrstft,1)'+med_mrstft;
-% med_mrstft = (med_mrstft - mean(med_mrstft, 'all'))/std(med_mrstft,0,'all');
-% 
-% med_esr = triu(med_esr,1)'+med_esr;
-% med_esr = (med_esr - mean(med_esr, 'all'))/std(med_esr,0,'all');
-
 %% plot the medians 
 fig = figure(4);
 
-c_min = -1.2316; 
-c_max = 2.5129;
+c_min = -1.2485; 
+c_max = 2.6011;
 
 subplot(1, 4, 1); 
 imagesc(med_esr); % axis image; axis ij; %colorbar; 

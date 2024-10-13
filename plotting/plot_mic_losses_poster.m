@@ -84,69 +84,15 @@ for i = 1:length(div)
     end
 end
 
-% med_edc = triu(med_edc);
-% med_power = triu(med_power);
-% med_mrstft = triu(med_mrstft);
-% med_esr = triu(med_esr);
-
-%% make symmetric 
-% % aftern normalization
-% [n,m]=size(med_edc);
-% 
-% % med_edc = med_edc/max(med_edc,[],'all');
-% med_edc = triu(med_edc,1)'+med_edc;
-% med_edc = (med_edc - mean(med_edc, 'all'))/std(med_edc,0,'all');
-% 
-% % med_power = med_power/max(med_power,[],'all');
-% med_power = triu(med_power,1)'+med_power;
-% med_power = (med_power - mean(med_power, 'all'))/std(med_power,0,'all');
-% 
-% % med_mrstft = med_mrstft/max(med_mrstft,[],'all');
-% med_mrstft = triu(med_mrstft,1)'+med_mrstft;
-% med_mrstft = (med_mrstft - mean(med_mrstft, 'all'))/std(med_mrstft,0,'all');
-% 
-% med_esr = triu(med_esr,1)'+med_esr;
-% med_esr = (med_esr - mean(med_esr, 'all'))/std(med_esr,0,'all');
 
 %% plot the medians 
 fig = figure(4);
 
-c_min = -1.2316; 
-c_max = 2.5129;
+% use same limits as in the general figure (plot_losses.m)
+c_min = -1.2485; 
+c_max = 2.6011;
 
-subplot(1, 4, 1); 
-imagesc(med_esr); % axis image; axis ij; %colorbar; 
-clim([c_min, c_max])
-axis image;
-colormap(mycolormap); % colorbar
-hold on 
-for i = 1:5
-   plot([.5,5.5],[i-.5,i-.5],'k-');
-   plot([i-.5,i-.5],[.5,5.5],'k-');
-end
-xlim([0.5, 5.5]); ylim([0.5, 5.5]);
-xlabel('Microphone position', 'FontSize', 20); ylabel('Microphone position','FontSize',20)
-set(gca,'Fontsize',16,'XTick', [1:5], 'XTicklabel',{'1', '2', '3', '4', '5'},'fontname','Times')
-set(gca,'Fontsize',16,'YTick', [1:5], 'YTicklabel',{'1', '2', '3', '4', '5'},'fontname','Times')
-title('$\mathcal{L}_{\textrm{ESR}}$')
-
-subplot(1, 4, 2); 
-imagesc(med_mrstft); % axis image; axis ij; %colorbar; 
-clim([c_min, c_max])
-axis image;
-colormap(mycolormap); % colorbar
-hold on 
-for i = 1:5
-   plot([.5,5.5],[i-.5,i-.5],'k-');
-   plot([i-.5,i-.5],[.5,5.5],'k-');
-end
-xlim([0.5, 5.5]); ylim([0.5, 5.5]);
-xlabel('Microphone position', 'FontSize', 20); ylabel('Microphone position','FontSize',20)
-set(gca,'Fontsize',16,'XTick', [1:5], 'XTicklabel',{'1', '2', '3', '4', '5'},'fontname','Times')
-set(gca,'Fontsize',16,'YTick', [1:5], 'YTicklabel',{'1', '2', '3', '4', '5'},'fontname','Times')
-title('$\mathcal{L}_{\textrm{MSS}}$')
-
-subplot(1, 4, 3); 
+subplot(2, 5, [1, 2, 6, 7]);
 imagesc(med_power);  % axis image; axis ij; %colorbar;  
 clim([c_min, c_max])
 axis image;
@@ -157,12 +103,12 @@ for i = 1:11
    plot([i-.5,i-.5],[.5,11.5],'k-');
 end
 xlim([0.5, 5.5]); ylim([0.5, 5.5]);
-xlabel('Microphone position', 'FontSize', 20); ylabel('Microphone position','FontSize',20)
-set(gca,'Fontsize',16,'XTick', [1:5], 'XTicklabel',{'1', '2', '3', '4', '5'},'fontname','Times')
-set(gca,'Fontsize',16,'YTick', [1:5], 'YTicklabel',{'1', '2', '3', '4', '5'},'fontname','Times')
+xlabel('Microphone position', 'FontSize', 34); ylabel('Microphone position','FontSize',34)
+set(gca,'Fontsize',20,'XTick', [1:5], 'XTicklabel',{'1', '2', '3', '4', '5'},'fontname','Times')
+set(gca,'Fontsize',20,'YTick', [1:5], 'YTicklabel',{'1', '2', '3', '4', '5'},'fontname','Times')
 title('$\mathcal{L}_{\textrm{PC}}$')
 
-subplot(1, 4, 4);
+subplot(2, 5, [3, 4, 8, 9]);
 imagesc(med_edc); % axis image;  %colorbar; 
 clim([c_min, c_max])
 axis image;
@@ -173,10 +119,39 @@ for i = 1:11
    plot([i-.5,i-.5],[.5,11.5],'k-');
 end
 xlim([0.5, 5.5]); ylim([0.5, 5.5]);
-xlabel('Microphone position', 'FontSize', 20); ylabel('Microphone position','FontSize',20)
-set(gca,'Fontsize',16,'XTick', [1:5], 'XTicklabel',{'1', '2', '3', '4', '5'},'fontname','Times')
-set(gca,'Fontsize',16,'YTick', [1:5], 'YTicklabel',{'1', '2', '3', '4', '5'},'fontname','Times')
+set(gca,'YTick',[])
+set(gca,'Fontsize',20,'XTick', [1:5], 'XTicklabel',{'1', '2', '3', '4', '5'},'fontname','Times')
 title('$\mathcal{L}_{\textrm{EDC}}$')
+
+subplot(2, 5, 5);
+imagesc(med_mrstft); % axis image; axis ij; %colorbar; 
+clim([c_min, c_max])
+axis image;
+colormap(mycolormap); % colorbar
+hold on 
+for i = 1:5
+   plot([.5,5.5],[i-.5,i-.5],'k-');
+   plot([i-.5,i-.5],[.5,5.5],'k-');
+end
+xlim([0.5, 5.5]); ylim([0.5, 5.5]);
+set(gca,'XTick',[])
+set(gca,'YTick',[])
+title('$\mathcal{L}_{\textrm{MSS}}$')
+
+subplot(2, 5, 10);
+imagesc(med_esr); % axis image; axis ij; %colorbar; 
+clim([c_min, c_max])
+axis image;
+colormap(mycolormap); % colorbar
+hold on 
+for i = 1:5
+   plot([.5,5.5],[i-.5,i-.5],'k-');
+   plot([i-.5,i-.5],[.5,5.5],'k-');
+end
+xlim([0.5, 5.5]); ylim([0.5, 5.5]);
+set(gca,'XTick',[])
+set(gca,'YTick',[])
+title('$\mathcal{L}_{\textrm{ESR}}$')
 
 
 h = axes(fig,'visible','off'); 
