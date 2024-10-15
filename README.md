@@ -32,6 +32,9 @@ $`\mathcal{L}_{\text{EDC}} = \frac{1}{|\mathcal{C}|}\sum_{f_{\textrm{c}} \in \ma
 
 The energy decay curve (EDC) at each frequency band $`\textrm{c} \in \mathcal{C}`$, $`\varepsilon_{\textrm{dB}}(t; f_\textrm{c})\,`$, is normalized to 0 dB to avoid emphasizing differences in noise level. 
 
+## Dataset of measured RIRs  
+We used a dataset of measured RIRs from a variable acoustics room [2], pre-processed to remove direct and early reflections, and segmented into 11 subsets based on the absorption configuration. For each partition, we randomly selected 25~RIRs, 5~RIRs for each of the 5 receiver positions.
+
 ### References
 
 ```[1] Dal Santo, G., Prawda, K., Schlecht, S. J., & Välimäki, V. (2024). Similarity Metrics For Late Reverberation. arXiv preprint arXiv:2408.14836.```  
