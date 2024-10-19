@@ -6,15 +6,16 @@ Pre-print available on [Arxiv](https://arxiv.org/abs/2408.14836) [1]
 The objective results presented in this study have been computed on the dataset of impulse responses from variable acoustics room Arni at Aalto Acoustic Labs [2] available on [Zenodo](https://zenodo.org/records/6985104)
 
 This repository contains the code used for 
-- Data pre-processing
-- Dataset sub-sampling
-- Evaluating similarity between RIRs using
+- Data pre-processing and sub-sampling (`get_subset_rirs.py`, `get_mixing_time.py`)
+- Evaluating similarity between RIRs using 
   - proposed similarity metrics $`\mathcal{L}_{\textrm{PC}}`$ and $`\mathcal{L}_{\textrm{EDC}}`$ 
   - baselines $`\mathcal{L}_{\textrm{MSS}}`$ [3] and $`\mathcal{L}_{\textrm{ESR}}`$ 
-- Plotting
-  
+  by analyzing differences in absorption confitions (`numclosed_effect.py`) and microphone location (`mic_position_effect.py`)
+- Evaluating the evolution of metrics on gradual differences (`smoothness.py`)
+- Plotting (`./plotting`, uses matlab)
+
 ## Introduction
-Accurate tuning of parametric artificial reverberators (ARs) relies heavily on the choice of cost function, yet common audio similarity metrics do not account for the unique statistical properties of late room reverberation. We introduce two novel similarity metrics specifically designed for this purpose, which outperform existing metrics on a dataset of measured room impulse responses (RIRs). 
+Accurate tuning of parametric artificial reverberators relies heavily on the choice of cost function, yet common audio similarity metrics do not account for the unique statistical properties of late room reverberation. We introduce two novel similarity metrics specifically designed for this purpose, which outperform existing metrics on a dataset of measured room impulse responses (RIRs). We propose a methodology that involves datasets like the *Arni dataset* to evaluate the performance of these loss functions to capture statistical differences between various absorption configurations, as well as their robustness to changes in microphone position.
 
 ## Proposed Similarity Metrics 
 
