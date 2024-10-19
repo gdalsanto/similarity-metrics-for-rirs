@@ -9,7 +9,8 @@ This repository contains the code used for
 - Data pre-processing and sub-sampling (`get_subset_rirs.py`, `get_mixing_time.py`)
 - Evaluating similarity between RIRs using 
   - proposed similarity metrics $`\mathcal{L}_{\textrm{PC}}`$ and $`\mathcal{L}_{\textrm{EDC}}`$ 
-  - baselines $`\mathcal{L}_{\textrm{MSS}}`$ [3] and $`\mathcal{L}_{\textrm{ESR}}`$ 
+  - baselines $`\mathcal{L}_{\textrm{MSS}}`$ [3] and $`\mathcal{L}_{\textrm{ESR}}`$
+    
   by analyzing differences in absorption confitions (`numclosed_effect.py`) and microphone location (`mic_position_effect.py`)
 - Evaluating the evolution of metrics on gradual differences (`smoothness.py`)
 - Plotting (`./plotting`, uses matlab)
