@@ -4,8 +4,7 @@ set(groot, 'defaulttextinterpreter','latex');
 set(groot, 'defaultAxesTickLabelInterpreter','latex');  
 set(groot, 'defaultLegendInterpreter','latex');
 
-% load("/Users/dalsag1/Dropbox (Aalto)/aalto/projects/asilomar24-rir-similarity/git/data/smooth_losses_mic2.mat")
-load("/Users/dalsag1/Dropbox (Aalto)/aalto/projects/rir-similarity-metrics/asilomar24-rir-similarity/git/data/smooth_losses_mic2.mat")
+load("../data/smoothness_mic2.mat")
 colors = {[239,95,40], [0,135,255], [0,199,87], [236,179,48], [228,57,215], [168,168,168], [105,105,105]};
 power_loss = normalize2(power_loss,  num_closed);
 mrstft_loss = normalize2(mrstft_loss, num_closed);
