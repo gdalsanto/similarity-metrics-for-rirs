@@ -1,8 +1,6 @@
-import pandas as pd
 import librosa
-from utils import rir_onset
-import os
-
+import pandas as pd
+from utils.utils import rir_onset
 """
 Read the metadata file of the Arni variable acoustics room dataset of measured rirs
 and create a new metadata file with only one rir per set of (num-closed, combination, mic)

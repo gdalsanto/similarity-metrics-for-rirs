@@ -1,7 +1,6 @@
-import numpy as np
-import pandas as pd
 import librosa
 import scipy 
+import pandas as pd
 import matplotlib.pyplot as plt
 from utils.utils import compute_echo
 
